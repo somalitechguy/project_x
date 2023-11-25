@@ -3,9 +3,9 @@ provider "azurerm" {
 }
 
 # comment
-resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
-  location = "West Europe"
+resource "azurerm_resource_group" "rg" {
+  name     = "rg1"
+  location = "north Europe"
 }
 
 resource "azurerm_virtual_network" "example" {
