@@ -2,7 +2,7 @@ provider "azurerm" {
   features {}
 }
 
-# comment
+
 resource "azurerm_resource_group" "rg" {
   name     = "rg1"
   location = "north Europe"
