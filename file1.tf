@@ -4,7 +4,7 @@ provider "azurerm" {
 
 
 resource "azurerm_resource_group" "rg" {
-  name     = "app2_rg"
+  name     = "app_rg"
   location = "north Europe"
 }
 
