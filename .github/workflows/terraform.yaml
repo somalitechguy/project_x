@@ -1,0 +1,42 @@
+name: Terraform Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    
+    env:
+      TF_VERSION: "0.15.0"  # Set the Terraform version you want to use
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: ${{ env.TF_VERSION }}
+    
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Validate
+      run: terraform validate
+
+    - name: Terraform Plan
+      run: terraform plan -out=tfplan
+
+    - name: Terraform Apply
+      run: terraform apply -auto-approve tfplan
+      # Note: The "-auto-approve" flag automatically approves and applies changes, use with caution.
+
+    - name: Terraform Destroy (Optional)
+      run: terraform destroy -auto-approve
+      # Note: This step is optional. Use it if you want to automatically destroy resources after the workflow completes.
+
+    - name: Cleanup
+      run: rm -rf .terraform
