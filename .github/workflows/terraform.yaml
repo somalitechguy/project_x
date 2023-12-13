@@ -36,7 +36,6 @@ jobs:
 
     - name: Terraform Destroy (Optional)
       run: terraform destroy -auto-approve
-      # Note: This step is optional. Use it if you want to automatically destroy resources after the workflow completes.
-
+    
     - name: Cleanup
       run: rm -rf .terraform
